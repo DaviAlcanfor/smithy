@@ -9,6 +9,16 @@ one needs. Target platform is Fedora — package installs go through `dnf`.
 - One project class per file under `src/smithy/projects/`, named `<lang>_project.py`.
 - `projects/` has no `__init__.py` by design — it is a namespace package.
 
+## Entry points
+
+`smithy` with no arguments opens the `questionary` menu in `interactive.py`; with
+arguments it goes through argparse. The menu must stay a shortcut — every flow it
+offers has to remain reachable through subcommands, and anything that needs a TTY has
+to degrade to the argparse help when `sys.stdin.isatty()` is false.
+
+`questionary` is the project's only runtime dependency. Think twice before adding a
+second one.
+
 ## Command discipline
 
 This is the rule the codebase is built around. Do not relax it.

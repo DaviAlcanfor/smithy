@@ -5,11 +5,11 @@
 **Forje projetos novos com as ferramentas já prontas.**
 
 Uma CLI que cria a estrutura do projeto *e* instala o toolchain que ele precisa —
-num comando só, sem template engine, sem dependência nenhuma.
+num comando só, ou escolhendo no menu com as setinhas.
 
 ![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)
 ![Fedora](https://img.shields.io/badge/fedora-dnf-51A2DA?logo=fedora&logoColor=white)
-![Dependências](https://img.shields.io/badge/dependências-zero-2ea44f)
+![Linguagens](https://img.shields.io/badge/linguagens-10-2ea44f)
 ![Status](https://img.shields.io/badge/status-MVP-orange)
 
 </div>
@@ -39,9 +39,25 @@ mexer no Python do sistema. Requer Python 3.11+.
 
 ## Uso
 
+Sem argumento nenhum, o Smithy abre o menu:
+
+```
+$ smithy
+? Que tipo de projeto? (Use arrow keys)
+ » 🐍  python
+   🦀  rust
+   🐹  go
+   ☕  java
+   ...
+? Nome do projeto: calculadora
+```
+
+Ou direto, quando você já sabe o que quer:
+
 | Comando | O que faz |
 | --- | --- |
-| `smithy list` | Lista os tipos de projeto e quais já estão implementados |
+| `smithy` | Abre o menu interativo |
+| `smithy list` | Lista os tipos de projeto |
 | `smithy install <tipo>` | Instala o toolchain do tipo via `dnf` |
 | `smithy new <tipo> <nome>` | Cria o projeto |
 | `smithy new <tipo> <nome> -p <dir>` | Cria em um diretório específico |
@@ -96,6 +112,7 @@ implementa `create()`, em uma de duas formas:
 ```
 src/smithy/
 ├── cli.py            # argparse: new, install, list
+├── interactive.py    # menu do `smithy` sem argumentos
 ├── command.py        # Command — um processo, sem shell
 ├── base_project.py   # BaseProject (ABC)
 ├── registry.py       # ProjectType -> instância de projeto
@@ -118,5 +135,4 @@ PYTHONPATH=src python3 -m smithy list
 
 ## Roadmap
 
-- Menu interativo ao rodar `smithy` sem argumentos
 - Publicar o projeto criado direto no GitHub
