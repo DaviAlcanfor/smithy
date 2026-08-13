@@ -3,6 +3,10 @@
 ## Adiado
 
 - Publicar o projeto criado no GitHub. Explicitamente deixado para uma versão futura.
+  Ideia: flag `--github [nome]` no `new` — cria o repo e já linka com a pasta do
+  projeto. Via `gh repo create <nome> --source=. --private --push`, que faz repo,
+  remote e push numa chamada só (requer `gh` instalado e autenticado; sem ele, avisar
+  e seguir com o projeto local). Nome padrão = nome do projeto.
 - Não há testes automatizados. A verificação até agora foi manual.
 
 ## Decisões tomadas sem spec
