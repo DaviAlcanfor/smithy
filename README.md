@@ -59,18 +59,22 @@ Sem `-p`, o projeto vai para `$SMITHY_PROJECTS_DIR` — padrão `~/Projects`.
 
 ## Tipos suportados
 
-| | Tipo | Como é criado | Toolchain |
+| | Tipo | Como é criado | Toolchain (`dnf`) |
 | :-: | --- | --- | --- |
 | 🐍 | `python` | `uv init --lib` | `uv` |
 | 🦀 | `rust` | `cargo new` | `rust`, `cargo` |
-| ⚙️ | `cpp` | Arquivos gerados pelo Smithy | `gcc-c++`, `clang`, `clang-tools-extra`, `cmake`, `make` |
+| 🐹 | `go` | `main.go` + `go mod init` | `golang` |
+| ☕ | `java` | `pom.xml` + `src/main/java/Main.java` | `java-latest-openjdk-devel`, `maven` |
+| ⚙️ | `c` | CMake + clangd, arquivos gerados | `gcc`, `clang`, `clang-tools-extra`, `cmake`, `make` |
+| ⚙️ | `cpp` | CMake + clangd, arquivos gerados | `gcc-c++`, `clang`, `clang-tools-extra`, `cmake`, `make` |
+| 📜 | `javascript` | `index.js` + `npm init -y` | `nodejs`, `npm` |
+| 🌐 | `typescript` | `tsconfig.json` + `npm install -D typescript` | `nodejs`, `npm` |
+| 🚀 | `astro` | `npm create astro@latest` (template minimal) | `nodejs`, `npm` |
+| 🐘 | `php` | `composer.json` PSR-4 + `composer install` | `php`, `php-cli`, `composer` |
 
-Um projeto C++ nasce pronto para o editor: `CMakeLists.txt` com C++20 e
-`compile_commands.json` habilitado, `src/main.cpp`, `.clang-format` e um `.clangd` já
-apontando para `build/`.
-
-Os tipos `go`, `java`, `c`, `javascript`, `typescript`, `astro` e `php` aparecem em
-`smithy list`, mas ainda não têm implementação — veja o [TODO.md](TODO.md).
+Projetos C e C++ nascem prontos para o editor: `CMakeLists.txt` com
+`compile_commands.json` habilitado, `.clang-format` e um `.clangd` já apontando para
+`build/`.
 
 ## Como funciona
 
@@ -114,5 +118,5 @@ PYTHONPATH=src python3 -m smithy list
 
 ## Roadmap
 
-- As sete linguagens que ainda são só um ícone
+- Menu interativo ao rodar `smithy` sem argumentos
 - Publicar o projeto criado direto no GitHub
